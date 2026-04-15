@@ -1,3 +1,6 @@
+#this is a file that essentially pre runs everythign you need to install on setup, in essense why its called a requirements file
+
+
 fastapi
 uvicorn[standard]
 python-dotenv
