@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+supabase
+anthropic
+scikit-learn
+numpy
+joblib
+httpx
