@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.joblib
+.env
+.env.local
+node_modules/
+frontend/dist/
+frontend/build/
+.DS_Store
+Thumbs.db
