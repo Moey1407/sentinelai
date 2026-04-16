@@ -28,9 +28,9 @@ app.add_middleware(
 def health_check():
     return {"status": "ok"}
 
-from routers import analyze
+from routers import analyze, agent
 app.include_router(analyze.router)
-# app.include_router(agent.router)
+app.include_router(agent.router)
 # app.include_router(incidents.router)
 # app.include_router(auth.router)
 
