@@ -8,6 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 #loads a .env file
 from dotenv import load_dotenv
 
+from routers import analyze, agent, incidents, auth
+
 load_dotenv()
 
 app = FastAPI(title="SentinelAI")
@@ -28,11 +30,11 @@ app.add_middleware(
 def health_check():
     return {"status": "ok"}
 
-from routers import analyze, agent
+
 app.include_router(analyze.router)
 app.include_router(agent.router)
-# app.include_router(incidents.router)
-# app.include_router(auth.router)
+app.include_router(incidents.router)
+app.include_router(auth.router)
 
 if __name__ == "__main__":
     #essentialy use uvicorn to 'turn on web app'
