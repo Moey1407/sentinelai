@@ -10,7 +10,7 @@ from sklearn.ensemble import IsolationForest
 #When you do detector = AnomalyDetector() and then detector.train(), inside train, self IS detector. It's how methods access the object's own data.
 #Without self.model you'd just have a local variable model that disappears when the method finishes. With self.model it belongs to the object and every method can access it.
 
-class AnamolyDetector:
+class AnomalyDetector:
     def __init__(self):
         #contamination means how much of the data you expect to have anomalies, random state is the seed number for rando number generator
         #Isolation Forest uses randomness when building trees — setting a seed means you get the same trees every time you run it. Makes results reproducible and debuggable
@@ -22,12 +22,20 @@ class AnamolyDetector:
         #save results here
         self.model_path = "ml/model.joblib"
         
+        if os.path.exists(self.model_path):
+            self.load()
+        else:
+            self.train()
+        
         
         
     def train(self):
         #random.normal is used to draw random samples form a normal gaussian distribution
         #again, we can revisit to make more accurate and fine tune
         #further - later down the line maybe we can deduce is this is for a company or home - probably the latter, cause the amount of activity for a network is egregous 
+        #loc is the mean - 0.5 means thats where regular traffic should sit
+        #scale = standard dev
+        #size = shape of the array - 1000 samples and 5 features (eg source ip, dest ip, port, protocol, packet size and so on)
         X = np.random.normal(loc=0.5, scale=0.1, size=(1000, 5))
         self.model.fit(X)
         self.save()
