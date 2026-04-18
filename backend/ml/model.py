@@ -2,7 +2,7 @@ import numpy as np
 import joblib
 import os
 from sklearn.ensemble import IsolationForest
-
+from sklearn.preprocessing import StandardScaler
 
 #throughout the code you gonna see self everywhere
 #self — when you write a class, self refers to the specific instance of that class.
@@ -18,7 +18,9 @@ class AnomalyDetector:
         #while there may be better options for accuracy, which i can revisit later - according to my research - this is good for large datasets and is fast
         #further, from youtube video - isolation forest is a inds anomalies through outliers using an ensable of decision trees by recusively splitting the dataset by selected features and values
         self.model = IsolationForest(contamination=0.1, random_state=42)
-        
+        self.scaler = StandardScaler()
+        self.model_path = "ml/model.joblib"
+        self.scaler_path = "ml/scaler.joblib"
         #save results here
         self.model_path = "ml/model.joblib"
         
@@ -37,6 +39,7 @@ class AnomalyDetector:
         #scale = standard dev
         #size = shape of the array - 1000 samples and 5 features (eg source ip, dest ip, port, protocol, packet size and so on)
         X = np.random.normal(loc=0.5, scale=0.1, size=(1000, 5))
+        X_scaled = self.scaler.fit_transform(X)
         self.model.fit(X)
         self.save()
         
@@ -46,6 +49,7 @@ class AnomalyDetector:
         #scores returns the anamoly score and the array only holds values with a score less than -0.1
         #-0.1 is tunable - the lower the stricter - which we might make in the near future - for example to 0.2 cause at the end of the day, this is a security product and needs to be strict 
     def predict(self, data):
+        X_scaled = self.scaler.transform(data)
         scores = self.model.score_samples(data)
         return [row for row, score in zip(data, scores) if score < -0.1]
     
@@ -53,8 +57,10 @@ class AnomalyDetector:
     #joblib.dump = write to disk. joblib.load = read from disk
     def save(self):
         joblib.dump(self.model, self.model_path)
+        joblib.dump(self.scaler, self.scaler_path)
         
     
     def load(self):
         self.model = joblib.load(self.model_path)
+        self.scaler = joblib.load(self.scaler_path)
         

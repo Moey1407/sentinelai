@@ -10,3 +10,7 @@ scikit-learn
 numpy
 joblib
 httpx
+python-multipart
+fpdf2
+langgraph
+langchain-anthropic
