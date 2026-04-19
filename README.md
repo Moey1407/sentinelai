@@ -19,7 +19,7 @@
 
 ---
 
-## 🔍 What is SentinelAI?
+## What is SentinelAI?
 
 SentinelAI is a full-stack threat intelligence platform that combines **unsupervised machine learning** with an **autonomous AI agent** to detect, investigate, and report on network anomalies in real time.
 
@@ -29,20 +29,20 @@ No rules. No signatures. Just intelligence.
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
-| 🤖 **ML Anomaly Detection** | Isolation Forest trained on 5 network features — detects outliers without labeled data |
-| 🕵️ **AI Agent Investigation** | LangGraph ReAct agent autonomously calls VirusTotal + AbuseIPDB APIs to assess threat level |
-| 📋 **Incident Reports** | Structured reports with severity rating, summary, and remediation recommendations — auto-saved to database |
-| 🔐 **Auth** | Supabase-powered signup/login with JWT session management |
-| 📊 **Live Dashboard** | Real-time incident history with severity breakdown and scan statistics |
-| 🌐 **REST API** | Fully documented FastAPI backend with interactive Swagger UI |
+| **ML Anomaly Detection** | Isolation Forest trained on 5 network features — detects outliers without labeled data |
+| **AI Agent Investigation** | LangGraph ReAct agent autonomously calls VirusTotal + AbuseIPDB APIs to assess threat level |
+| **Incident Reports** | Structured reports with severity rating, summary, and remediation recommendations — auto-saved to database |
+| **Auth** | Supabase-powered signup/login with JWT session management |
+| **Live Dashboard** | Real-time incident history with severity breakdown and scan statistics |
+| **REST API** | Fully documented FastAPI backend with interactive Swagger UI |
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -73,7 +73,7 @@ No rules. No signatures. Just intelligence.
 
 ---
 
-## 🧠 How the ML Works
+## How the ML Works
 
 The anomaly detector uses **Isolation Forest** — an unsupervised algorithm that isolates outliers by randomly partitioning data. Anomalies require fewer splits to isolate, producing a lower anomaly score.
 
@@ -91,7 +91,7 @@ A **StandardScaler** normalises all features before prediction, ensuring port nu
 
 ---
 
-## 🕵️ How the AI Agent Works
+## How the AI Agent Works
 
 The investigator uses **LangGraph's ReAct pattern** (Reason → Act → Observe loop):
 
@@ -110,7 +110,7 @@ The agent decides **autonomously** which tools to call, in what order, and when 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.10+
@@ -197,7 +197,7 @@ Full interactive docs: [`/docs`](https://sentinelai-9k3q.onrender.com/docs)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Backend**
 - [FastAPI](https://fastapi.tiangolo.com) — async Python API framework
@@ -216,7 +216,7 @@ Full interactive docs: [`/docs`](https://sentinelai-9k3q.onrender.com/docs)
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 sentinelai/
@@ -244,7 +244,7 @@ sentinelai/
 
 ---
 
-## 🔒 Security Notes
+## Security Notes
 
 - All API keys are stored as environment variables — never committed to source control
 - Supabase Row Level Security (RLS) is enabled on the incidents table
