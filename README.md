@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ SentinelAI
+# SentinelAI
 
 ### AI-Powered Cybersecurity Threat Intelligence Platform
 
